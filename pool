@@ -1,0 +1,10 @@
+Pool 
+Game genre : casual
+Gameplay: player use cue ball to hit the ball with different color(represent missing artefact), collect the correct artefact ball
+Rules: The ball change color when hit cushion
+	2 balls of same color vanish when hit each other, which is called collect
+	If you collect a pair of balls with right color, you get 1 soul.
+	Cue ball hit the ball and turns it to the next color.
+	Color order: red->yellow->blue(only 3)
+	Collect 3 souls to win.
+#just a random casual game for visitors who like to play games for now
