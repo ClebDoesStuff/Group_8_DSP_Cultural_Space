@@ -18,7 +18,17 @@ public class ControllerMovement : MonoBehaviour
     void Update()
     {
         direction = joystick.action.ReadValue<Vector2>();
-        Debug.Log(direction);
-        transform.parent.parent.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,0,direction.y * speed * Time.deltaTime));
+
+        /*
+          
+        // this almost allows you to look in the direction you want to go and use the joystick
+        
+        Debug.Log("1 "+transform.parent.GetChild(0).localRotation.y);
+        Debug.Log("2 "+ transform.parent.GetChild(0).rotation.y * 360);
+        
+        Quaternion rot = Quaternion.Euler(transform.parent.parent.transform.rotation.x, transform.parent.GetChild(0).localRotation.y * 360, transform.parent.parent.transform.rotation.z);
+        transform.parent.parent.transform.rotation = rot;
+        */
+        transform.parent.parent.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,0,direction.y * speed * Time.deltaTime), Space.Self);
     }
 }
