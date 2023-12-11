@@ -30127,6 +30127,7 @@ GameObject:
   - component: {fileID: 714893058}
   - component: {fileID: 714893057}
   - component: {fileID: 714893056}
+  - component: {fileID: 714893061}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -30742,6 +30743,21 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!114 &714893061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714893054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d73c0745fa350d4bade3fc2daa12eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  direction: {x: 0, y: 0}
+  speed: 1
 --- !u!43 &718845473
 Mesh:
   m_ObjectHideFlags: 0
