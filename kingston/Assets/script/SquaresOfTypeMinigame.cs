@@ -5,6 +5,7 @@ using System;
 public class SquaresOfTypeMinigame : MonoBehaviour
 {
     public GameObject board;
+    public GameObject WinText;
     public List<GameObject> Squares;
 
     [Serializable]
@@ -53,6 +54,7 @@ public class SquaresOfTypeMinigame : MonoBehaviour
                 {
                     CurrentGroup = groupname;
                     SquareGroups[x].CheckGroup(Squares); // check if group has been completed
+                    WinCheck();
                     // function for if all groups have been found
                     return true;
                 }
@@ -92,6 +94,21 @@ public class SquaresOfTypeMinigame : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void WinCheck()
+    {
+        bool Win = true;
+        for (int y = 0; y < SquareGroups.Count; y++)
+        {
+            if (SquareGroups[y].complete == false)
+            {
+                Win = false;
+            }
+        }
+        if (Win) {
+            WinText.SetActive(true);
+        }
     }
 
     void Start()
