@@ -42,14 +42,20 @@ public class SquaresOfTypeMinigame : MonoBehaviour
     }
 
     public List<Group> SquareGroups;
+    public string CurrentGroup = "NO GROUP SELECTED";
 
     public bool SquareSelected(string groupname) {
         for (int x = 0; x < SquareGroups.Count; x++) // if selected square is part of a group
         {
             if (SquareGroups[x].GroupName == groupname)
             {
-                SquareGroups[x].CheckGroup(Squares); // check if group has been completed
-                return true;
+                if (CurrentGroup == groupname || CurrentGroup == "NO GROUP SELECTED")
+                {
+                    CurrentGroup = groupname;
+                    SquareGroups[x].CheckGroup(Squares); // check if group has been completed
+                    // function for if all groups have been found
+                    return true;
+                }
             }
         }
         for (int x = 0; x < Squares.Count; x++) // if square was not part of a group reset all activated squares that are not part of a completed set
@@ -58,13 +64,30 @@ public class SquaresOfTypeMinigame : MonoBehaviour
             {
                 for (int y = 0; y < SquareGroups.Count; y++)
                 {
+                    if (Squares[x].GetComponent<Minigame_Square>().GroupName == "")
+                    {
+                        Squares[x].GetComponent<Minigame_Square>().Deactivate();
+                    }
                     if (SquareGroups[y].GroupName == Squares[x].GetComponent<Minigame_Square>().GroupName)
                     {
                         if (!SquareGroups[y].complete)
                         {
+                            CurrentGroup = "NO GROUP SELECTED";
                             Squares[x].GetComponent<Minigame_Square>().Deactivate();
                         }
                     }
+                }
+            }
+        }
+        for (int x = 0; x < SquareGroups.Count; x++) // if new selected square is part of a group
+        {
+            if (SquareGroups[x].GroupName == groupname)
+            {
+                if (CurrentGroup == groupname || CurrentGroup == "NO GROUP SELECTED")
+                {
+                    CurrentGroup = groupname;
+                    SquareGroups[x].CheckGroup(Squares); // check if group has been completed
+                    return true;
                 }
             }
         }
@@ -77,7 +100,7 @@ public class SquaresOfTypeMinigame : MonoBehaviour
         {
             Squares.Add(board.transform.GetChild(x).gameObject);
         }
-        Group group1 = new Group("group 1", new List<int>(){1,2,3} , Color.green, Squares);
+        Group group1 = new Group("group 1", new List<int>(){10,11,12} , Color.green, Squares);
         Group group2 = new Group("group 2", new List<int>(){5,6,7} , Color.red, Squares);
         SquareGroups.Add(group1);
         SquareGroups.Add(group2);

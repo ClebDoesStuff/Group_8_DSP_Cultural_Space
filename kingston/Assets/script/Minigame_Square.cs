@@ -12,7 +12,7 @@ public class Minigame_Square : MonoBehaviour
     {
         GroupName = "";
         Activated = false;
-        transform.GetComponent<Renderer>().material.color = new Color(1,1,1);
+        //transform.GetComponent<Renderer>().material.color = new Color(1,1,1);
         // change colour to deactivated
     }
 
@@ -27,7 +27,7 @@ public class Minigame_Square : MonoBehaviour
     public void Deactivate()
     {
         Activated = false;
-        transform.GetComponent<Renderer>().material.color = Colour;
+        transform.GetComponent<Renderer>().material.color = new Color(1f,1f,1f);
         // change colour to deactivated
     }
 }
