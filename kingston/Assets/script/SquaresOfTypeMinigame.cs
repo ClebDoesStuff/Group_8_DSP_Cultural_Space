@@ -7,6 +7,7 @@ public class SquaresOfTypeMinigame : MonoBehaviour
     public GameObject board;
     public GameObject WinText;
     public List<GameObject> Squares;
+    public Playeritems Playersitems;
 
     [Serializable]
     public class Group
@@ -108,6 +109,10 @@ public class SquaresOfTypeMinigame : MonoBehaviour
         }
         if (Win) {
             WinText.SetActive(true);
+            if (Playersitems.artefacts < 4)
+            {
+                Playersitems.artefacts++;
+            }
         }
     }
 
