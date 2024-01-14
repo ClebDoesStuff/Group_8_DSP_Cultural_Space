@@ -40,6 +40,10 @@ public class ControllerMovement : MonoBehaviour
                 {
                     hit.transform.gameObject.GetComponent<Minigame_Square>().Selected();
                 }
+                if (hit.transform.gameObject.GetComponent<ResetButton>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<ResetButton>().ResetMinigame();
+                }
             }
         }
         if (RightAButton == 0)
