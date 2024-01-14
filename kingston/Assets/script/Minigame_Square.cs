@@ -11,17 +11,19 @@ public class Minigame_Square : MonoBehaviour
     public Color Colour;
     public string character;
     public TextMeshPro Text;
+
+    public bool testinput;
     void Start()
     {
-        GroupName = "";
+        Text = transform.GetChild(0).GetComponent<TextMeshPro>();
         Activated = false;
-        Text.text = "";
     }
     public void ResetState()
     {
         GroupName = "";
         Activated = false;
         Text.text = "";
+        character = "";
         transform.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f);
         Colour = new Color(1f, 1f, 1f);
     }
@@ -41,5 +43,14 @@ public class Minigame_Square : MonoBehaviour
         Text.text = "";
         transform.GetComponent<Renderer>().material.color = new Color(1f,1f,1f);
         // change colour to deactivated
+    }
+
+    void Update()
+    {
+        if (testinput)
+        {
+            Selected();
+            testinput = false;
+        }
     }
 }

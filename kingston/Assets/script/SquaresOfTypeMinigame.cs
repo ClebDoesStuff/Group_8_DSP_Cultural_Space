@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
+
 public class SquaresOfTypeMinigame : MonoBehaviour
 {
     public GameObject board;
     public GameObject WinText;
     public List<GameObject> Squares;
-    public Playeritems Playersitems;
-    public int Stage;
+    public static int Stage;
     public bool Win;
 
     public bool testbutton;
@@ -113,16 +114,15 @@ public class SquaresOfTypeMinigame : MonoBehaviour
                 Win = false;
             }
         }
-        Win = true; // testing purposes
+        //Win = true; // testing purposes
         if (Win) {
             WinText.GetComponent<TextMeshPro>().text = "Stage: " + Stage + "\nAll Groups Found";
-            if (Playersitems.artefacts < 4) // 0 1 2 3
+            if (Playeritems.artefacts < 4) // 0 1 2 3
             {
-                Playersitems.artefacts++; // 1 2 3 4
-                if (Playersitems.artefacts < 4)
+                Playeritems.artefacts++; // 1 2 3 4
+                if (Playeritems.artefacts < 4)
                 {
                     SquareGroups.Clear();
-                    SquareGroups.Add(Words[Playersitems.artefacts + 1]); // 2 3 4
                 }
             }
         }
@@ -133,7 +133,8 @@ public class SquaresOfTypeMinigame : MonoBehaviour
         {
             WinText.GetComponent<TextMeshPro>().text = "Stage: " + Stage + "\ncompleted\nAll Artefacts Found";
         }
-        else {
+        else
+        {
             if (Stage < 4 && Win)
             {
                 Stage++;
@@ -142,9 +143,55 @@ public class SquaresOfTypeMinigame : MonoBehaviour
                 {
                     Squares[x].GetComponent<Minigame_Square>().ResetState();
                 }
+                if (Stage == 2)
+                {
+                    SquareGroups.Clear();
+
+                    Group group3 = new Group("group 3", new List<int>() { 4, 7, 15, 18, 25 }, Color.yellow, Squares);
+
+                    Squares[3].GetComponent<Minigame_Square>().character = "P";
+                    Squares[6].GetComponent<Minigame_Square>().character = "L";
+                    Squares[14].GetComponent<Minigame_Square>().character = "A";
+                    Squares[17].GetComponent<Minigame_Square>().character = "T";
+                    Squares[24].GetComponent<Minigame_Square>().character = "E";
+                    Words.Add(group3);
+                    SquareGroups.Add(group3);
+                }
+                if (Stage == 3)
+                {
+                    SquareGroups.Clear();
+
+                    Group group4 = new Group("group 4", new List<int>() { 1, 2, 3, 4, 5, 10 }, Color.blue, Squares);
+                    Squares[0].GetComponent<Minigame_Square>().character = "T";
+                    Squares[1].GetComponent<Minigame_Square>().character = "R";
+                    Squares[2].GetComponent<Minigame_Square>().character = "O";
+                    Squares[3].GetComponent<Minigame_Square>().character = "P";
+                    Squares[4].GetComponent<Minigame_Square>().character = "H";
+                    Squares[9].GetComponent<Minigame_Square>().character = "Y";
+                    Words.Add(group4);
+                    SquareGroups.Add(group4);
+                }
+                if (Stage == 4)
+                {
+                    SquareGroups.Clear();
+
+                    Group group5 = new Group("group 5", new List<int>() { 1, 6, 11, 16, 21, 22 }, Color.magenta, Squares);
+                    Squares[0].GetComponent<Minigame_Square>().character = "P";
+                    Squares[5].GetComponent<Minigame_Square>().character = "E";
+                    Squares[10].GetComponent<Minigame_Square>().character = "W";
+                    Squares[15].GetComponent<Minigame_Square>().character = "T";
+                    Squares[20].GetComponent<Minigame_Square>().character = "E";
+                    Squares[21].GetComponent<Minigame_Square>().character = "R";
+                    Words.Add(group5);
+                    SquareGroups.Add(group5);
+                }
                 WinText.GetComponent<TextMeshPro>().text = "Stage: " + Stage;
             }
-        }        
+        }
+        if (Stage < 4)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void Start()
@@ -156,18 +203,22 @@ public class SquaresOfTypeMinigame : MonoBehaviour
         {
             Squares.Add(board.transform.GetChild(x).gameObject);
         }
-        Group group1 = new Group("group 1", new List<int>(){10,11,12,13,15} , Color.green, Squares);
-        Group group2 = new Group("group 2", new List<int>(){5,6,7} , Color.red, Squares);
-        Group group3 = new Group("group 3", new List<int>(){5,6,7} , Color.yellow, Squares);
-        Group group4 = new Group("group 4", new List<int>(){5,6,7} , Color.blue, Squares);
-        Group group5 = new Group("group 5", new List<int>(){5,6,7} , Color.magenta, Squares);
+        Squares[0].GetComponent<Minigame_Square>().character = "S";
+        Squares[5].GetComponent<Minigame_Square>().character = "W";
+        Squares[6].GetComponent<Minigame_Square>().character = "O";
+        Squares[11].GetComponent<Minigame_Square>().character = "R";
+        Squares[12].GetComponent<Minigame_Square>().character = "D";
+        Squares[4].GetComponent<Minigame_Square>().character = "N";
+        Squares[9].GetComponent<Minigame_Square>().character = "E";
+        Squares[14].GetComponent<Minigame_Square>().character = "W";
+        Group group1 = new Group("group 1", new List<int>(){1,6,7,12,13} , Color.green, Squares);
+        Group group2 = new Group("group 2", new List<int>(){5,10,15} , Color.red, Squares);
+        
         SquareGroups.Add(group1);
         SquareGroups.Add(group2);
         Words.Add(group1);
         Words.Add(group2);
-        Words.Add(group3);
-        Words.Add(group4);
-        Words.Add(group5);
+        
     }
 
     void Update()

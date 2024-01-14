@@ -6,7 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ControllerMovement : MonoBehaviour
 {
-    public InputActionReference joystick;
     public InputActionReference RightAButtonActionReference;
     public InputActionReference RightBButtonActionReference;
     public GameObject Text;
@@ -14,7 +13,6 @@ public class ControllerMovement : MonoBehaviour
     public float RightBButton;
     public XRRayInteractor RayI;
     public RaycastHit hit;
-    public Vector2 direction;
     public float speed;
     public bool AButtonDown;
     public bool BButtonDown;
@@ -30,8 +28,6 @@ public class ControllerMovement : MonoBehaviour
     {
         RightAButton = RightAButtonActionReference.action.ReadValue<float>();
         RightBButton = RightBButtonActionReference.action.ReadValue<float>();
-        direction = joystick.action.ReadValue<Vector2>();
-        transform.parent.parent.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,0,direction.y * speed * Time.deltaTime), Space.Self);
         if (RightAButton == 1 && !AButtonDown)
         {
             AButtonDown = true;
