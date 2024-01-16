@@ -196,7 +196,6 @@ public class SquaresOfTypeMinigame : MonoBehaviour
     void Start()
     {
         Win = false;
-        testbutton = false;
         Stage = 1;
         for (int x = 0; x < 25; x++)
         {
