@@ -11,12 +11,4 @@ public class ResetButton : MonoBehaviour
     {
         MinigameManager.ResetGame();
     }
-    private void Update()
-    {
-        if (testbutton)
-        {
-            ResetMinigame();
-            testbutton = false;
-        }
-    }
 }
