@@ -13,7 +13,6 @@ public class SquaresOfTypeMinigame : MonoBehaviour
     public static int Stage;
     public bool Win;
 
-    public bool testbutton;
 
     [Serializable]
     public class Group
@@ -219,14 +218,5 @@ public class SquaresOfTypeMinigame : MonoBehaviour
         Words.Add(group1);
         Words.Add(group2);
         
-    }
-
-    void Update()
-    {
-        if (testbutton)
-        {
-            WinCheck();
-            testbutton = false;
-        }
     }
 }
