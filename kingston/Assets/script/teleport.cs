@@ -14,7 +14,7 @@ public class teleport : MonoBehaviour
             if (teleporterNo == "2"){ Playeritems.teleporter2 = false; }
             if (teleporterNo == "3"){ Playeritems.teleporter3 = false; }
             if (teleporterNo == "4"){ Playeritems.teleporter4 = false; }
-            SceneManager.LoadScene(1);
+            SceneManager.LoadSceneAsync(1);
         }
     }
     void Start()

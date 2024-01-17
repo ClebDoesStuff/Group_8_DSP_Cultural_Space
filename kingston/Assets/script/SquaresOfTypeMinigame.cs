@@ -189,7 +189,8 @@ public class SquaresOfTypeMinigame : MonoBehaviour
         }
         if (Stage < 4)
         {
-            SceneManager.LoadScene(0);
+            Playeritems.artefacts = Playeritems.artefacts+1;
+            SceneManager.LoadSceneAsync(0);
         }
     }
 
